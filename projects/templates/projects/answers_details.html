@@ -1,0 +1,56 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Ответ{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Ответ</h1>
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold">{{ answer.questions.title }}</h2>
+            <p class="col-md-8 fs-4">{{ answer.date }}</p>
+            <p class="col-md-8 fs-4"><b>Автор:</b> {{ answer.expert.get_full_name }}</p><hr>
+            <p class="col-md-8 fs-4"><b>Вопрос 1:</b> {{ questions.0 }}</p>
+            {% if answer.comment1 %}
+            <p class="col-md-8 fs-4"><b>Комментарий:</b> {{ answer.comment1 }}</p>
+            {% endif %}
+            <hr>
+
+            {% if questions.1 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 2:</b> {{ questions.1 }}</p>
+            {% if answer.comment1 %}
+            <p class="col-md-8 fs-4"><b>Комментарий:</b> {{ answer.comment2 }}</p>
+            {% endif %}
+            <hr>
+            {% endif %}
+
+            {% if questions.2 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 3:</b> {{ questions.2 }}</p>
+            {% if answer.comment3 %}
+            <p class="col-md-8 fs-4"><b>Комментарий:</b> {{ answer.comment3 }}</p>
+            {% endif %}
+            <hr>
+            {% endif %}
+
+            {% if questions.3 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 4:</b> {{ questions.3 }}</p>
+            {% if answer.comment1 %}
+            <p class="col-md-8 fs-4"><b>Комментарий:</b> {{ answer.comment4 }}</p>
+            {% endif %}
+            <hr>
+            {% endif %}
+
+            {% if questions.4 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 5:</b> {{ questions.4 }}</p>
+            {% if answer.comment1 %}
+            <p class="col-md-8 fs-4"><b>Комментарий:</b> {{ answer.comment5 }}</p>
+            {% endif %}
+            <hr>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

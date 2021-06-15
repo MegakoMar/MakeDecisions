@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Главная страница</h1>
+    </div>
+    <div class="row align-items-md-stretch local-img">
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Текущие проблемы</h2>
+                <p>В данном разделе содержатся текущие проблемы с которыми необходимо ознакомиться экспертам</p>
+                <button class="btn btn-outline-secondary" type="button">Перейти к проблемам</button>
+            </div>
+            </div>
+        <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h2>Актуальные вопросы</h2>
+            <p>Здесь собраны вопросы, которые появились у экспертов после изучения проблемы</p>
+            <button class="btn btn-outline-light" type="button">Перейти к вопросам</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="row align-items-md-stretch local-img">
+        <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h2>Опросы</h2>
+            <p>Здесь находятся опросы, которые необходимо пройти экспертам, чтобы высказать свое мнение</p>
+            <button class="btn btn-outline-light" type="button">Перейти к вопросам</button>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Последние ответы</h2>
+            <p>В данном разделе находятся последние ответы экспертов</p>
+            <button class="btn btn-outline-secondary" type="button">Перейти к ответам</button>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

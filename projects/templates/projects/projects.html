@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Список проблем{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Список проблем</h1>
+        {% if user.is_authenticated and user.groups.all.0.name == "Руководитель" %}
+        <div class='create-project'>
+            <a href="{% url 'create_project' %}" class="btn btn-primary" role="button" data-bs-toggle="button"> Создать проблему</a>
+        </div>
+        {% endif %}
+    </div>
+    {% if projects %}
+        {% for item in  projects %}
+        {% if user in item.members.all %}
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">{{ item.title }}</h1>
+                <p class="col-md-8 fs-4">{{ item.info }}</p>
+                <a href="{% url 'project_detail' item.id %}" class="btn btn-primary" role="button" data-bs-toggle="button">Открыть</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Пока нет активных проектов</p>
+    {% endif %}
+</div>
+{% endblock %}

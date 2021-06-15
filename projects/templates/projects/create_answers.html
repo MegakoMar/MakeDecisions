@@ -1,0 +1,88 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Создание опроса{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Ответ</h1>
+    </div>
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-floating">
+                    {{ form.project }}
+                    <label for="floatingInput">Проект</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.questions }}
+                    <label for="floatingInput">Опрос</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.expert }}
+                    <label for="floatingInput">Автор</label>
+                </div>
+                <div>
+                    <div>
+                        <h3>Вопрос 1: {{ questions.0 }}</h3>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.comment1 }}
+                        <label for="floatingInput">Комментарий</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div>
+                        <h3>Вопрос 2: {{ questions.1 }}</h3>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.comment2 }}
+                        <label for="floatingInput">Комментарий</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div>
+                        <h3>Вопрос 3:{{ questions.2 }}</h3>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.comment3 }}
+                        <label for="floatingInput">Комментарий</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div>
+                        <h3>Вопрос 4: {{ questions.3 }}</h3>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.comment4 }}
+                        <label for="floatingInput">Комментарий</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div>
+                        <h3>Вопрос 5: {{ questions.4 }}</h3>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.comment5 }}
+                        <label for="floatingInput">Комментарий</label>
+                    </div>
+                </div>
+
+                {% if form.errors %}
+                <p class="text-error">{{ form.errors }}</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить ответ</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

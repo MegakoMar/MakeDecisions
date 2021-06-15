@@ -1,0 +1,90 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Профиль</h1>
+    </div>
+    <div class="container emp-profile text-white">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="{% static 'main/img/free-icon-alien-4698762.svg' %}" alt=""/>
+                    </div>
+                </div>
+                <div class="col-md-6 profile-top">
+                    <div class="profile-head">
+                                <h5>
+                                    {{ user.get_full_name }}
+                                </h5>
+                                <h6>
+                                    {{ user.groups.all.0 }}
+                                </h6>
+                                <p class="proile-rating">Рейтинг : <span>8/10</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Информация</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'profile_edit' user.id %}" class="btn btn-primary" role="button" data-bs-toggle="button">Редактировать профиль</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 profile-left">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Username</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ user.username }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Полное имя</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ user.get_full_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ user.email }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Номер телефона</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>+7-987-999-99-99</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Должность</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ user.groups.all.0 }}</p>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>           
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Создание опроса{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Введите вопросы</h1>
+    </div>
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-floating">
+                    {{ form.project }}
+                    <label for="floatingInput">Проект</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.title }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+
+                {% if form.errors %}
+                <p class="text-error">{{ error }}</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

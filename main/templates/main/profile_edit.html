@@ -1,0 +1,43 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Редактирование профиля</h1>
+    </div>
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-floating">
+                  {{ form.first_name }}
+                  <label for="floatingInput">Имя</label>
+                </div>
+                <div class="form-floating">
+                  {{ form.last_name }}
+                  <label for="floatingInput">Фамилия</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.email }}
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.groups }}
+                    <label for="floatingInput">Должность</label>
+                </div>
+                 
+                {% if form.errors %}
+                <p class="text-error">{{ form.errors }}</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

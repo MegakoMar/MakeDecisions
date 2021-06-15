@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Опрос{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Опрос</h1>
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold">{{ questions.title }}</h2>
+            <p class="col-md-8 fs-4"><b>Создан:</b> {{ questions.date }}</p>
+            <p class="col-md-8 fs-4"><b>Автор:</b> {{ questions.expert.get_full_name }}</p><hr>
+            <p class="col-md-8 fs-4"><b>Вопрос 1:</b> {{ questions.question1 }}</p><hr>
+            {% if questions.question2 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 2:</b> {{ questions.question2 }}</p><hr>
+            {% endif %}
+            {% if questions.question3 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 3:</b> {{ questions.question3 }}</p><hr>
+            {% endif %}
+            {% if questions.question4 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 4:</b> {{ questions.question4 }}</p><hr>
+            {% endif %}
+            {% if questions.question5 %}
+            <p class="col-md-8 fs-4"><b>Вопрос 5:</b> {{ questions.question5 }}</p><hr>
+            {% endif %}
+            
+            <!-- <a href="{% url 'create_answers' questions.id %}" class="btn btn-primary" role="button" data-bs-toggle="button">Пройти опрос</a> -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+

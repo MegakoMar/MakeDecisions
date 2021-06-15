@@ -1,0 +1,47 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Создание проекта{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Создание проекта</h1>
+    </div>
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-floating">
+                  {{ form.title }}
+                  <label for="floatingInput">Название</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.info }} 
+                  <label for="floatingInput">Информация о проекте</label>
+                </div>
+                <div class="form-floating local-img">
+                    {{ form.image }}
+                    <label for="floatingInput">Изображение</label>
+                </div>
+                <div class="form-floating local-img">
+                    {{ form.members }}
+                    <label for="floatingInput">Участники</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.date }}
+                    <label for="floatingInput">Дата создания</label>
+                </div>
+                 
+                {% if form.errors %}
+                <p class="text-error">{{ error }}</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

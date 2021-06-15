@@ -1,0 +1,43 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Регистрация</h1>
+    </div>
+    
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST" action="{% url 'register' %}">
+              {% csrf_token %}
+
+                <img class="mb-4" src="{% static 'main/img/logo.svg' %}" alt="" width="72" height="57">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Логин" name="username">
+                  <label for="floatingInput">Логин</label>
+                </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль" name="password1">
+                  <label for="floatingPassword">Пароль</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Повторите пароль" name="password2">
+                    <label for="floatingPassword">Повторите пароль</label>
+                  </div>
+
+                {% if form.errors %}
+                <p class="text-error">Что-то пошло не так, проверьте ваши данные</p>
+                {% endif %}
+
+                <!-- {{ form }}
+                <input type="submit" value="Регистрация"> -->
+            
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегестрироваться</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

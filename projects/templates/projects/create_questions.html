@@ -1,0 +1,59 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Создание опроса{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Введите вопросы</h1>
+    </div>
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-floating">
+                    {{ form.project }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.expert }}
+                    <label for="floatingInput">Автор вопросов</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.title }}
+                    <label for="floatingInput">Название темы</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.question1 }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.question2 }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.question3 }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.question4 }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+                <div class="form-floating">
+                    {{ form.question5 }}
+                    <label for="floatingInput">Текст вопроса</label>
+                </div>
+
+                {% if form.errors %}
+                <p class="text-error">{{ error }}</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

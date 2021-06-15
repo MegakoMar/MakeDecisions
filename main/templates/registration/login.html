@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Авторизация</h1>
+    </div>
+    
+    <div class="text-center">
+        <div class="form-signin">
+            <form method="POST" action=" {% url 'login' %}">
+              {% csrf_token %}
+
+                <img class="mb-4" src="{% static 'main/img/logo.svg' %}" alt="" width="72" height="57">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="name" name="username">
+                  <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль" name="password">
+                  <label for="floatingPassword">Пароль</label>
+                </div>
+                
+                {% if form.errors %}
+                <p class="text-error">Проверьте ваши логин и пароль</p>
+                {% endif %}
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

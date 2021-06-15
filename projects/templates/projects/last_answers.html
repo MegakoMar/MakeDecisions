@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+{% load mathfilters %}
+
+{% block title %}Последние ответы{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Последние ответы</h1>
+    </div>
+    <div class="row align-items-md-stretch questions-blocks">
+        {% if answers %}
+        {% for answer in answers %}
+        <div class="col-md-6 questions-blocks">
+            <div class="h-100 p-5 bg-light rounded-3">
+                <h2>{{ answer.questions.title }}</h2>
+                <p>Дата прохождения опроса: {{ answer.date }}</p>
+                <p>Автор: {{ answer.expert.get_full_name }}</p>
+                <a href="{% url 'answers_details' answer.id %}" class="btn btn-primary" role="button" data-bs-toggle="button">Перейти к ответам</a>
+            </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

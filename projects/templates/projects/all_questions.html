@@ -1,0 +1,51 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Все вопросы{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Все вопросы</h1>
+        {% if user.is_authenticated and user.groups.all.0.name == "Руководитель" %}
+        <div class='create-project'>
+            {% if iter == 1 %}
+            <a href="{% url 'questions_iter_two' %}" class="btn btn-primary" role="button" data-bs-toggle="button">Выбрать новые вопросы</a>
+            {% elif iter == 2 %}
+            <a href="{% url 'questions_iter_three' %}" class="btn btn-primary" role="button" data-bs-toggle="button">Выбрать новые вопросы</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-floating">
+                    <select class="form-control" id="floatingInput" name='project'>
+                        {% for item in projects %}
+                        <option> {{ item }} </option>
+                        {% endfor %}
+                    </select>
+                    <label for="floatingInput">Проект</label>
+                </div>
+                <div class="form-floating">
+                    <select class="form-control" id="floatingInput" name='iter'>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <label for="floatingInput">Итерация</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Фильтр</button>
+            </form>
+        </div>
+        <p class="col-md-8 fs-4"><b>Итерация: </b>{{ iter }}</p>
+        <div class="container-fluid py-5">
+            {% for item in questions %}
+            <p class="col-md-8 fs-4"><b>Вопрос:</b> {{ item }}</p><hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

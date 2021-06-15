@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Актуальная проблема{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Актуальная проблема</h1>
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold">{{ project.title }}</h2>
+            <p class="col-md-8 fs-4">{{ project.date }}</p>
+            {% if project.members %}
+            <h3 class="display-5 fw-bold"><b>Участники</b></h3>
+            {% for item in project.members.all %}
+            <span class="col-md-8 fs-4 local-img">{{ item.get_full_name }}</span>
+            {% endfor %}
+            {% endif %}
+            <h3 class="display-5 fw-bold"><b>Информация</b></h3>
+            <p class="col-md-8 fs-4">{{ project.info }}</p>
+            {% if project.image %}
+            <img class="img-fluids local-img" src="{{ project.image.url }}">
+            {% endif %}
+
+            <div>
+                <a href="{% url 'create_questions' %}" class="btn btn-primary" role="button" data-bs-toggle="button">Задать вопросы</a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="p-5 mb-4 bg-light rounded-3">
+        <h3 class="display-5 fw-bold"><b>Решение</b></h3>
+        {% if finalAnswers %}
+        {% for item in finalAnswers %}
+        <p>{{ item }}</p>
+        {% endfor %}
+        {% endif %}
+    </div> -->
+</div>
+{% endblock %}
+

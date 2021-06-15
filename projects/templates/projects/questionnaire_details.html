@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Опрос{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Опрос</h1>
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold">{{ questionIterTwo.title }}</h2>
+            {% for item in questionIterTwo.questions.all %}
+            <p class="col-md-8 fs-4"><b>Вопрос:</b> {{ item.title }}</p><hr>
+            {% if item.questions.coutn == 3 %}
+            <p>item.questions.0.iter</p>
+            {% endif %}
+            {% endfor %}
+            <a href="{% url 'create_answers' questionIterTwo.id %}" class="btn btn-primary" role="button" data-bs-toggle="button">Пройти опрос</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

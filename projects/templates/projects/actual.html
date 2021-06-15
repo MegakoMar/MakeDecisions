@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Актуальные вопросы{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="custom-h1">
+        <h1>Актуальные вопросы</h1>
+        {% if user.is_authenticated and user.groups.all.0.name == "Руководитель" %}
+        <div class='create-project'>
+            <a href="{% url 'all_questions' %}" class="btn btn-primary" role="button" data-bs-toggle="button">Посмотреть все</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row align-items-md-stretch questions-blocks">
+        {% if questions %}
+        {% for question in questions %}
+        {% if user in question.project.members.all %}
+        <div class="col-md-6 local-img">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>{{ question.title }}</h2>
+                <p>{{ question.date }}</p>
+                <p>{{ question.question1 }}</p>
+                <a href="{% url 'questions_details' question.id %}" class="btn btn-outline-light" role="button" data-bs-toggle="button">Перейти к вопросам</a>
+            </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
